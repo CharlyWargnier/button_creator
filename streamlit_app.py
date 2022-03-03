@@ -6,9 +6,16 @@ st.set_page_config(
     page_icon="🕹️",
 )
 
+st.image(
+    "https://emojipedia-us.s3.amazonaws.com/source/skype/289/joystick_1f579-fe0f.png",
+    width=150,
+)
 st.title("Material-UI Button Designer")
 
-st.write("https://v4.mui.com/components/buttons/")
+st.write(
+    "Design your Material-UI buttons, add clickable hyperlinks, integrate them in your Streamlit apps! 🎈"
+)
+st.write("")
 
 with st.form(key="my_form_2"):
     col1, col2 = st.columns(2)
@@ -65,6 +72,9 @@ mt.button(
 mt.show("zero")
 
 st.subheader("Code")
+
+st.write("First, pip install streamlit-elements")
+
 code = (
     """
 
@@ -100,4 +110,8 @@ mt.button("""
 """
 )
 
+code2 = "pip install streamlit-elements"
+st.code(code2, language="python")
+
+st.write("Second, add the following code to your Streamlit app")
 st.code(code, language="python")
