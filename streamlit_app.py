@@ -8,7 +8,7 @@ st.set_page_config(
 
 st.image(
     "https://emojipedia-us.s3.amazonaws.com/source/skype/289/joystick_1f579-fe0f.png",
-    width=150,
+    width=125,
 )
 st.title("Material-UI Button Designer")
 
@@ -20,26 +20,42 @@ st.write("")
 with st.form(key="my_form_2"):
     col1, col2 = st.columns(2)
     with col1:
-        btn_name = st.text_input("🅰️ Button label", value="Press me!")
-        buttonStyle = st.selectbox(
-            "🕹️ Button style", ["outlined", "contained", "link"], 1
+        btn_name = st.text_input(
+            "🅰️ Button label", value="Press me!", help="Add a label to your button."
         )
-        color = st.selectbox("🎨 Button color", ["primary", "secondary", "default"], 1)
+        buttonStyle = st.selectbox(
+            "🕹️ Button style",
+            ["outlined", "contained", "link"],
+            1,
+            help="Select the button style.",
+        )
+        color = st.selectbox(
+            "🎨 Button color",
+            ["primary", "secondary", "default"],
+            1,
+            help="Select the button color.",
+        )
 
     with col2:
-        hrefLink = st.text_input("🔗 Hyperlink", "https://streamlit.io/")
-        size = st.selectbox("📦 Button size", ["small", "medium", "large"], 1)
+        hrefLink = st.text_input(
+            "🔗 Hyperlink", "https://streamlit.io/", help="Add a link to your button."
+        )
+        size = st.selectbox(
+            "📦 Button size",
+            ["small", "medium", "large"],
+            1,
+            help="Select the button size.",
+        )
         icon_selected = st.selectbox(
             "📸 Icon",
             ["no icon", "send", "delete", "save", "chat", "call", "accessible"],
             index=1,
+            help="Select the button icon (more to come!)",
         )
 
         def get_icon(mt, icon):
 
-            if icon == "no icon":
-                pass
-            elif icon == "send":
+            if icon == "send":
                 return mt.icons.send, "mt.icons.send"
             elif icon == "delete":
                 return mt.icons.delete, "mt.icons.delete"
@@ -66,7 +82,7 @@ mt.button(
     target="_blank",
     size=size,
     variant=buttonStyle,
-    color=color,    
+    color=color,
     start_icon=start_icon[0],
     href=hrefLink,
 )
@@ -74,10 +90,8 @@ mt.show("zero")
 
 st.subheader("Code")
 
-
 st.write(
     f"""
-## Code
 
 First, pip install streamlit-elements
 
@@ -103,48 +117,3 @@ href="{hrefLink}")
 ```
 """
 )
-
-st.stop()
-
-st.write("First, pip install streamlit-elements")
-
-code = (
-    """
-
-import streamlit as st
-from streamlit_elements import Elements
-mt = Elements()
-mt.button("""
-    + "'"
-    + str(btn_name)
-    + "'"
-    + """, target="_blank", """
-    + """size='"""
-    + str(size)
-    + "'"
-    + """, variant="""
-    + "'"
-    + str(buttonStyle)
-    + "'"
-    + """, color="""
-    + "'"
-    + str(color)
-    + "'"
-    + """, start_icon="""
-    + "'"
-    + str(start_icon)
-    + "'"
-    + """, href="""
-    + "'"
-    + str(hrefLink)
-    + "'"
-    + """)
-
-"""
-)
-
-code2 = "pip install streamlit-elements"
-st.code(code2, language="python")
-
-st.write("Second, add the following code to your Streamlit app")
-st.code(code, language="python")
