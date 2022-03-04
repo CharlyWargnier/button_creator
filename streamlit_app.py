@@ -39,7 +39,7 @@ with st.form(key="my_form_2"):
             if icon == "no icon":
                 pass
             elif icon == "send":
-                return mt.icons.send
+                return mt.icons.send, "mt.icons.send"
             elif icon == "delete":
                 return mt.icons.delete
             elif icon == "save":
@@ -65,13 +65,45 @@ mt.button(
     target="_blank",
     size=size,
     variant=buttonStyle,
-    color=color,
-    start_icon=start_icon,
+    color=color,    
+    start_icon=start_icon[0],
     href=hrefLink,
 )
 mt.show("zero")
 
 st.subheader("Code")
+
+
+st.write(
+    f"""
+## Code
+
+First, pip install stremalit-elements
+
+```python
+pip install streamlit-elements
+```
+
+Second, add the following code to your Streamlit app
+
+```python
+import streamlit as st
+from streamlit_elements import Elements
+
+mt = Elements()
+mt.button(\
+"{btn_name}", \
+target="_blank", \
+size="{size}", \
+variant="{buttonStyle}", \
+color="{color}", \
+start_icon="{start_icon[1]}", \
+href="{hrefLink}")
+```
+"""
+)
+
+st.stop()
 
 st.write("First, pip install streamlit-elements")
 
