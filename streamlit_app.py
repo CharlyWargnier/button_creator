@@ -36,20 +36,21 @@ with st.form(key="my_form_2"):
         )
 
         def get_icon(mt, icon):
+
             if icon == "no icon":
                 pass
             elif icon == "send":
                 return mt.icons.send, "mt.icons.send"
             elif icon == "delete":
-                return mt.icons.delete
+                return mt.icons.delete, "mt.icons.delete"
             elif icon == "save":
-                return mt.icons.save
+                return mt.icons.save, "mt.icons.save"
             elif icon == "chat":
-                return mt.icons.chat
+                return mt.icons.chat, "mt.icons.chat"
             elif icon == "call":
-                return mt.icons.call
+                return mt.icons.call, "mt.icons.call"
             elif icon == "accessible":
-                return mt.icons.accessible
+                return mt.icons.accessible, "mt.icons.accessible"
 
         st.write("")
 
