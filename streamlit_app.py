@@ -79,7 +79,7 @@ st.write(
     f"""
 ## Code
 
-First, pip install stremalit-elements
+First, pip install streamlit-elements
 
 ```python
 pip install streamlit-elements
